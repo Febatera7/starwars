@@ -29,6 +29,7 @@ class UsersController {
 
             res.status(201).send({ message: 'User created successfully. Please login to the app' });
         } catch (err) {
+            console.error(err.message);
             res.status(400).send({ error: err.message });
         }
     };
@@ -46,6 +47,7 @@ class UsersController {
                 }
             });
         } catch (err) {
+            console.error(err.message);
             res.status(400).send({ error: err.message });
 
         }
@@ -59,6 +61,7 @@ class UsersController {
 
             res.status(200).send({ message: 'User successfully updated' });
         } catch (err) {
+            console.error(err.message);
             res.status(400).send({ error: err.message });
         }
     }
@@ -69,6 +72,7 @@ class UsersController {
 
             res.status(200).send({ message: 'User successfully deleted' });
         } catch (err) {
+            console.error(err.message);
             res.status(400).send({ error: err.message });
         }
     }

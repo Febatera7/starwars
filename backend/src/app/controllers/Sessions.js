@@ -25,11 +25,12 @@ class SessionController {
             const userUpdated = await user.update({ token: token });
 
             res.status(200).send({
-                email: userUpdated.email,
+                name: userUpdated.name,
                 token: userUpdated.token
             });
 
         } catch (err) {
+            console.error(err.message);
             res.status(400).send({ error: err.message });
         }
     };

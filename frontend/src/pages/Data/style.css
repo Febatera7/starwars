@@ -1,0 +1,137 @@
+.data-container {
+    width: 100%;
+    max-width: 1920px;
+    padding: 0 30px;
+    margin: 0;
+}
+
+.data-container header {
+    display: flex;
+    align-items: center;
+}
+
+.data-container header span {
+    color: #ffffff;
+    font-size: 20px;
+    margin-left: 24px;
+}
+
+.data-container header img {
+    height: 64px;
+    cursor: pointer;
+}
+
+
+.data-container header a {
+    width: 260px;
+    margin-left: auto;
+    margin-top: 0;
+}
+
+.data-container header button {
+    height: 60px;
+    width: 60px;
+    border-radius: 4px;
+    border: 1px solid #ffffff;
+    background: transparent;
+    margin-left: 16px;
+    transition: border-color 0.3s;
+}
+
+.data-container header button:hover {
+    border-color: #999;
+}
+
+.data-container h1 {
+    font-size: 80px;
+    color: #000000;
+    margin-top: 80px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-container ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 8px;
+    list-style: circle;
+}
+
+.data-container ul li {
+    background: #FFF;
+    padding: 8px;
+    border-radius: 8px;
+    position: relative;
+    list-style-type: none;
+}
+
+.data-container ul li:hover {
+    opacity: 0.9
+}
+
+.data-container ul li strong {
+    display: flexbox;
+    margin-bottom: 16px;
+    color: #41414D;
+}
+
+.data-container ul li p+strong {
+    margin-top: 32px;
+}
+
+.data-container ul li p {
+    color: #737380;
+    line-height: 21px;
+    font-size: 16px;
+}
+
+.pagination {
+    background: transparent;
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    padding: 30px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.pagination h3 {
+    color: #ffffff;
+    margin-bottom: 10px;
+
+}
+
+.pagination ul {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.pagination ul li {
+    display: inline;
+}
+
+.pagination ul li a {
+    color: #000000;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination ul li a.active {
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.pagination ul li a:hover:not(.active) {
+    background-color: #ddd;
+}

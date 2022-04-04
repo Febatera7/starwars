@@ -11,6 +11,7 @@ class StarWars {
 
             res.status(200).send(response.data);
         } catch (err) {
+            console.error(err.message);
             res.status(400).send({ error: err.message });
         }
     };
@@ -19,27 +20,35 @@ class StarWars {
         try {
             const { filter, page } = req.body;
 
-
             const cachedData = await cache.get(filter);
 
-            if (cachedData) {
+            if (cachedData && cachedData.next - 1 === page) {
                 console.info({ message: 'The data was already cached' });
                 return res.status(200).send(cachedData);
-            }
-            let data;
+            };
+            
+            const data = await axios.get(`${baseUrl}/${filter}/?page=${page}`);
 
-            if (page > 1) {
-                data = await axios.get(`${baseUrl}/${filter}/?page=${page}`);
-            } else {
-                data = await axios.get(`${baseUrl}/${filter}/`);
+            const totalNumberOfPages = Math.ceil(data.data.count/10);
+
+            let numberOfPages = [];
+
+            for (let index = 1; index <= totalNumberOfPages; index++) {
+                numberOfPages.push(index);
+            };    
+
+            const results = {
+                numberOfPages,
+                results: data.data.results,
             };
 
-            await cache.put('people', data.data.results, 300000);
+            cache.put(`${filter}`, results, 300000);
 
             console.info({ message: `The data was cached with the key ${filter}` });
 
-            res.status(200).send(data.data.results);
+            res.status(200).send(results);
         } catch (err) {
+            console.error(err.message);
             res.status(400).send({ error: err.message });
         }
     };
